@@ -1,0 +1,77 @@
+# Java and Spring Boot related files
+target/
+*.jar
+*.war
+*.ear
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Spring Boot specific
+spring.log
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.settings/
+target/
+
+# STS (Spring Tool Suite)
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+bin/
+
+# VS Code
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Maven
+.mvn/
+!**/mvnw
+!**/mvnw.cmd
+**/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle-wrapper.jar
+.gradle/
+build/
+
+# envs
+local.env
+
+# Node and NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Other
+*.swp
+*~
+.idea/
+*.iml
+*.ipr
+out/
