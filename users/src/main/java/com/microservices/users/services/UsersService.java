@@ -9,6 +9,8 @@ public interface UsersService {
 
     Users getUserDetailsById(UUID id);
 
+    Users getUserDetailsByEmail(String email);
+
     void updateUserById(Users updatedUsers, Users existingUsers);
 
     void deleteUserById(UUID id);
