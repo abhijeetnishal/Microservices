@@ -7,6 +7,9 @@ import java.util.logging.Logger;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
+import io.sentry.Sentry;
+import io.sentry.SentryLevel;
+
 public class UsersServiceUtils {
     private static final Logger logger = Logger.getLogger(UsersServiceUtils.class.getName());
 
@@ -26,6 +29,8 @@ public class UsersServiceUtils {
             String[] result = new String[emptyNames.size()];
             return emptyNames.toArray(result);
         } catch (Exception e) {
+            Sentry.captureMessage("Error occurred while getting null property names: " + e.getMessage(),
+                    SentryLevel.ERROR);
             logger.severe("Error occurred while getting null property names: " + e.getMessage());
             return null;
         }

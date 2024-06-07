@@ -12,6 +12,9 @@ import com.microservices.users.entities.Users;
 import com.microservices.users.repositories.UsersRepository;
 import com.microservices.users.utils.UsersServiceUtils;
 
+import io.sentry.Sentry;
+import io.sentry.SentryLevel;
+
 @Service
 public class UsersServiceImpl implements UsersService {
     @Autowired
@@ -24,6 +27,7 @@ public class UsersServiceImpl implements UsersService {
         try {
             return usersRepository.save(user);
         } catch (Exception e) {
+            Sentry.captureMessage("Error occurred while creating user: " + e.getMessage(), SentryLevel.FATAL);
             logger.severe("Error occurred while creating user: " + e.getMessage());
             return null;
         }
@@ -34,6 +38,7 @@ public class UsersServiceImpl implements UsersService {
         try {
             return usersRepository.findById(id).orElse(null);
         } catch (Exception e) {
+            Sentry.captureMessage("Error occurred while getting user by id: " + e.getMessage(), SentryLevel.FATAL);
             logger.severe("Error occurred while getting user by id: " + e.getMessage());
             return null;
         }
@@ -44,7 +49,8 @@ public class UsersServiceImpl implements UsersService {
         try {
             return usersRepository.findByEmail(email);
         } catch (Exception e) {
-            logger.severe("Error occurred while getting user by id: " + e.getMessage());
+            Sentry.captureMessage("Error occurred while getting user by email: " + e.getMessage(), SentryLevel.FATAL);
+            logger.severe("Error occurred while getting user by email: " + e.getMessage());
             return null;
         }
     }
@@ -60,6 +66,7 @@ public class UsersServiceImpl implements UsersService {
 
             usersRepository.save(existingUser);
         } catch (Exception e) {
+            Sentry.captureMessage("Error occurred while updating user: " + e.getMessage(), SentryLevel.ERROR);
             logger.severe("Error occurred while updating user: " + e.getMessage());
         }
     }
