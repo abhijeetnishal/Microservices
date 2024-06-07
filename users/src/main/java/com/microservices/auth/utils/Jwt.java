@@ -1,6 +1,5 @@
 package com.microservices.auth.utils;
 
-import com.microservices.users.UsersApplication;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -19,7 +18,7 @@ public class Jwt {
     @Value("${jwt.secret}")
     private String secret;
 
-    private static final Logger logger = Logger.getLogger(UsersApplication.class.getName());
+    private static final Logger logger = Logger.getLogger(Jwt.class.getName());
 
     public String generateToken(String userId) {
         try {
