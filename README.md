@@ -161,3 +161,108 @@ The microservices architecture follows a modular approach where each service is 
 - **Status Code**: `200 ok`
 
 </details>
+
+<br/>
+
+# API Endpoints for Auth Service
+
+## OAuth2 Sign-In
+
+<details>
+<summary>View Details</summary>
+
+### Request
+
+- **Method**: `GET`
+- **URL**: `/v1/auth/oauth2`
+- **Headers**: `Content-Type: application/json`
+- **Query Parameters**:
+  - `type`: The type of OAuth2 provider (e.g., `google`, `github`)
+  - `code`: The authorization code from the OAuth2 provider
+
+### Response
+
+- **Status Code**: `200 OK`
+- **Body**:
+  ```json
+  {
+    "status": "success",
+    "message": "User created",
+    "data": {
+      "id": 1,
+      "userName": "john.doe",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "profileImage": "http://example.com/profile.jpg"
+    }
+  }
+  ```
+
+</details>
+
+## Email Signup
+
+<details>
+<summary>View Details</summary>
+
+### Request
+
+- **Method**: `GET`
+- **URL**: `/v1/auth/signup/email`
+- **Headers**: `Content-Type: application/json`
+- **Body**:
+  ```json
+  {
+    "email": "john.doe@example.com"
+  }
+  ```
+
+### Response
+
+- **Status Code**: `200 OK`
+- **Body**:
+  ```json
+  {
+    "message": "Verification code sent",
+    "data": null
+  }
+  ```
+
+</details>
+
+## Verify Email
+
+<details>
+<summary>View Details</summary>
+
+### Request
+
+- **Method**: `POST`
+- **URL**: `/v1/auth/signup/verify`
+- **Headers**: `Content-Type: application/json`
+- **Query Parameters**:
+  - `code`: The authorization code from the OAuth2 provider
+- **Body**:
+  ```json
+  {
+    "email": "john.doe@example.com"
+  }
+  ```
+
+### Response
+
+- **Status Code**: `200 OK`
+- **Body**:
+  ```json
+  {
+    "status": "success",
+    "message": "Verification successful",
+    "data": {
+      "id": 1,
+      "userName": "john.doe"
+    }
+  }
+  ```
+
+</details>
