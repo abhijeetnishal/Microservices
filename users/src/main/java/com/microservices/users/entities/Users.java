@@ -33,10 +33,10 @@ public class Users implements Serializable {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
-    private Users() {
+    public Users() {
     }
 
-    private Users(UUID id, String userName, String email, Date createdAt, Date updatedAt) {
+    public Users(UUID id, String userName, String email, Date createdAt, Date updatedAt) {
         this.id = id;
         this.userName = userName;
         this.email = email;

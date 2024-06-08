@@ -8,4 +8,6 @@ import com.microservices.users.entities.Users;
 public interface UsersRepository extends JpaRepository<Users, UUID> {
 
     Users findByEmail(String email);
+
+    Users findByUserName(String userName);
 }

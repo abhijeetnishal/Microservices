@@ -56,6 +56,16 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public Users getUserDetailsByUserName(String userName) {
+        try {
+            return usersRepository.findByUserName(userName);
+        } catch (Exception e) {
+            logger.severe("Error occurred while getting user by username: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
     public void updateUserById(Users updatedUser, Users existingUser) {
         try {
             // Copy non-null properties from updatedUser to existingUser

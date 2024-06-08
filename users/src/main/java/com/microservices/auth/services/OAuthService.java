@@ -90,6 +90,7 @@ public class OAuthService {
             final HttpEntity<MultiValueMap<String, String>> request = getMultiValueMapHttpEntity(type, code, headers);
 
             RestTemplate restTemplate = new RestTemplate();
+            @SuppressWarnings("rawtypes")
             ResponseEntity<Map> response = restTemplate.postForEntity(
                     Objects.equals(type, "google") ? googleTokenUri : discordTokenUri,
                     request,
